@@ -1,12 +1,12 @@
 package com.dlfc.zfgj.controller;
 
 import com.dlfc.zfgj.dto.base.ResultDTO;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.dlfc.zfgj.service.UploadService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import java.io.File;
+import java.util.List;
 
 /**
  * Created by walden on 2017/2/16.
@@ -14,27 +14,32 @@ import java.io.File;
 @RestController
 @RequestMapping(value = "/w/actions")
 public class ActionController {
-
+    @Autowired
+    private UploadService uploadService;
     /**
      * 下载文件
-     * @param file
+     * @param files
      * @return
      */
     @RequestMapping(value = "/donwload/{file}", method = RequestMethod.POST)
-    public ResultDTO<Void> donwload(@PathVariable File file){
+    public ResultDTO<Void> donwload(@RequestBody CommonsMultipartFile[] files){
         //TODO download file
-        return null;
+
+
+        return ResultDTO.success();
     }
 
     /**
      * 上传文件
-     * @param file
+     * @param files
      * @return
      */
     @RequestMapping(value = "/upload/{file}", method = RequestMethod.POST)
-    public ResultDTO<Void> upload(@PathVariable File file){
+    public ResultDTO<Void> upload(@RequestBody CommonsMultipartFile[] files){
         //TODO upload file to server
-        return null;
+        List<CommonsMultipartFile> uploadedFiles = uploadService.upload(files);
+
+        return ResultDTO.success();
     }
 
     /**
