@@ -4,6 +4,7 @@ import com.dlfc.zfgj.common.Upload;
 import com.dlfc.zfgj.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by walden on 2017/2/17.
  */
 @Service
+@Transactional
 public class UploadServiceImpl implements UploadService<CommonsMultipartFile> {
 
     @Autowired
