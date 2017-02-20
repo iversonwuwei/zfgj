@@ -4,3 +4,18 @@ spring:
     url: jdbc:mysql://localhost:3306/icloth2
     username: root
     password: rd123456
+
+cas:
+  server:
+    url: https://www.housecenter.cn/dlfc_sso
+  project:
+    url: https://www.housecenter.cn
+adminPath: /a
+session:
+  sessionTimeout: 1800000
+  sessionTimeoutClean: 120000
+redis:
+  keyPrefix: dlfcsite
+
+upload:
+  path: ~/uploadFile
