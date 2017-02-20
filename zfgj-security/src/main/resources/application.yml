@@ -1,0 +1,8 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://loclahost:3306/icloth2
+    username: root
+    password: rd123456

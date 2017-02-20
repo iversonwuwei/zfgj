@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>zfgj</artifactId>
@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zfgj-contract</artifactId>
+    <artifactId>zfgj-security</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -18,28 +19,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <version>1.4.2.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
-            <version>1.4.2.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.4.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.5</version>
+            <groupId>com.housecenter.dlfc.common</groupId>
+            <artifactId>dlfc-common</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -62,14 +48,14 @@
             <version>1.4.2.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>1.4.2.RELEASE</version>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.2</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.4.2.RELEASE</version>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.3.1</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -84,26 +70,21 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <build>
+        <finalName>security</finalName>
+    </build>
     <profiles>
         <profile>
-            <id>dev</id>
+            <id>dev-security</id>
             <properties>
-                <database.driver.name>com.mysql.cj.jdbc.Driver</database.driver.name>
-                <database.url>jdbc:mysql://localhost:3306/icloth2</database.url>
-                <database.username>root</database.username>
-                <database.password>rd123456</database.password>
+                <cas.server.url>https://www.housecenter.cn/dlfc_sso</cas.server.url>
+                <cas.project.url>https://www.housecenter.cn</cas.project.url>
+                <admin.path>/a</admin.path>
+                <session.sessionTimeout>1800000</session.sessionTimeout>
+                <session.sessionTimeoutClean>120000</session.sessionTimeoutClean>
+                <redis.keyPrefix>dlfcsite</redis.keyPrefix>
             </properties>
+
         </profile>
     </profiles>
-    <build>
-        <finalName>contract</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.5</version>
-            </plugin>
-        </plugins>
-    </build>
 </project>

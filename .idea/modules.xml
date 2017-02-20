@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/zfgj.iml" filepath="$PROJECT_DIR$/zfgj.iml" />
       <module fileurl="file://$PROJECT_DIR$/zfgj-contract/zfgj-contract.iml" filepath="$PROJECT_DIR$/zfgj-contract/zfgj-contract.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zfgj-security/zfgj-security.iml" filepath="$PROJECT_DIR$/zfgj-security/zfgj-security.iml" />
     </modules>
   </component>
 </project>
