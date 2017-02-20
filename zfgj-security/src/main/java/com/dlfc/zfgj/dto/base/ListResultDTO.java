@@ -46,7 +46,7 @@ public class ListResultDTO<T> extends AbstractResultDTO {
     public static <T> ListResultDTO<T> failure(final List<T> listData, final ResultError... errors) {
         final ListResultDTO<T> result = new ListResultDTO<>(Status.failure);
         result.setData(listData);
-        //result.setErrors(errors);
+        result.setErrors(errors);
         return result;
     }
 }
