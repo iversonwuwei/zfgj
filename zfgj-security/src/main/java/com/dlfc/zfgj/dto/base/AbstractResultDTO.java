@@ -1,5 +1,6 @@
 package com.dlfc.zfgj.dto.base;
 
+import com.dlfc.error.ResultError;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,7 +31,7 @@ public abstract class AbstractResultDTO {
      * 错误消息
      */
     //@ApiModelProperty(value = "异常信息", position = 10)
-    //protected ResultError[] errors;
+    protected ResultError[] errors;
 
     /**
      * 时间戳
@@ -49,16 +50,16 @@ public abstract class AbstractResultDTO {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "errors")
-    /*public ResultError[] getErrors() {
+    public ResultError[] getErrors() {
         return this.errors;
-    }*/
+    }
 
     ///////////////////////////////////////
     // Setter
     ///////////////////////////////////////
-    /*protected void setErrors(final ResultError... errors) {
+    protected void setErrors(final ResultError... errors) {
         this.errors = errors;
-    }*/
+    }
 
     @JsonIgnore
     public boolean isFailure() {
@@ -79,7 +80,7 @@ public abstract class AbstractResultDTO {
     }
 
     //@JsonIgnore
-    /*public String errorsToString() {
+    public String errorsToString() {
         if ((this.errors != null) && (this.errors.length > 0)) {
             final StringBuilder builder = new StringBuilder();
             builder.append("Errors : [");
@@ -91,5 +92,5 @@ public abstract class AbstractResultDTO {
         } else {
             return "errors : []";
         }
-    }*/
+    }
 }

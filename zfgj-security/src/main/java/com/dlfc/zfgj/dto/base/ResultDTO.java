@@ -1,6 +1,7 @@
 package com.dlfc.zfgj.dto.base;
 
-import com.dlfc.zfgj.error.ResultError;
+
+import com.dlfc.error.ResultError;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -49,7 +50,7 @@ public class ResultDTO<T> extends AbstractResultDTO {
 
     public static ResultDTO<Void> failure(final ResultError... errors) {
         final ResultDTO<Void> result = new ResultDTO<>(Status.failure);
-        //result.setErrors(errors);
+        result.setErrors(errors);
         return result;
     }
 
@@ -62,7 +63,7 @@ public class ResultDTO<T> extends AbstractResultDTO {
     public static <T> ResultDTO<T> failure(final T data, final ResultError... errors) {
         final ResultDTO<T> result = new ResultDTO<>(Status.failure);
         result.setData(data);
-        //result.setErrors(errors);
+        result.setErrors(errors);
         return result;
     }
 }
