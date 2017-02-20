@@ -21,7 +21,7 @@ public class ActionController {
      * @param files
      * @return
      */
-    @RequestMapping(value = "/donwload/{file}", method = RequestMethod.POST)
+    @RequestMapping(value = "/donwload", method = RequestMethod.POST)
     public ResultDTO<Void> donwload(@RequestBody CommonsMultipartFile[] files){
         //TODO download file
 
@@ -34,7 +34,7 @@ public class ActionController {
      * @param files
      * @return
      */
-    @RequestMapping(value = "/upload/{file}", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ResultDTO<Void> upload(@RequestBody CommonsMultipartFile[] files){
         //TODO upload file to server
         List<CommonsMultipartFile> uploadedFiles = uploadService.upload(files);
