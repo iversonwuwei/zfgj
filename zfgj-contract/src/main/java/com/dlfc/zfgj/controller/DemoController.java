@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * Created by walden on 2017/2/15.
  */
@@ -20,7 +18,7 @@ public class DemoController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> user(){
-        return userService.getUsers();
+    public User user(){
+        return userService.getUserNew();
     }
 }

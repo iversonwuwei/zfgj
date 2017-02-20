@@ -8,6 +8,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = "com.dlfc.zfgj.repositories")
+@MapperScan(basePackages = {"com.dlfc.zfgj.repositories"})
 public class MybatisConfig {
 
     @Value("${spring.datasource.driver-class-name}")
@@ -27,6 +28,9 @@ public class MybatisConfig {
     private String username;
     @Value("${spring.datasource.password}")
     private String password;
+
+    @Value("${mybatis.mapper-locations}")
+    private String mapperLocation;
 
     @Bean
     public DataSource dataSource(){
@@ -43,6 +47,7 @@ public class MybatisConfig {
     public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
+        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocation));
         return sqlSessionFactoryBean.getObject();
     }
 

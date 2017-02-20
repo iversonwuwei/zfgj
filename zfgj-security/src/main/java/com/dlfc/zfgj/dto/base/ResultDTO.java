@@ -1,7 +1,7 @@
 package com.dlfc.zfgj.dto.base;
 
 
-import com.dlfc.error.ResultError;
+import com.dlfc.zfgj.error.ResultError;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

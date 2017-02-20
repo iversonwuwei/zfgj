@@ -27,7 +27,7 @@ public class SecurityController {
     @RequestMapping(value = "logout", method = RequestMethod.PUT)
     public ResultDTO<Void> logout(){
         SecurityUtils.getSubject().logout();
-
+        SecurityController.log.info("用户登出成功!");
         return ResultDTO.success();
     }
 
@@ -35,7 +35,7 @@ public class SecurityController {
     public ResultDTO<LoginDTO> login(@RequestBody @Valid User user) throws CustomRuntimeException {
         String username = user.getUsername();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
-        //获取当前的Subject
+
         Subject currentUser = SecurityUtils.getSubject();
 
         try{
