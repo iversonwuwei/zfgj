@@ -1,4 +1,4 @@
-package com.dlfc.error;
+package com.dlfc.zfgj.error;
 
 /**
  * Created by walden on 2017/2/20.
