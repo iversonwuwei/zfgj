@@ -19,7 +19,7 @@ public abstract class AbstractConvertor<ENTITY, DTO> {
      * @param dto 数据传输对象
      * @return
      */
-    public abstract ENTITY toModel(final DTO dto);
+    public abstract ENTITY toModel(final DTO dto) throws CustomRuntimeException;
 
     /**
      * 将 Model 转换为 DTO.

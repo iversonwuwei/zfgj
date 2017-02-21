@@ -1,11 +1,17 @@
 package com.dlfc.zfgj.controller;
 
+import com.dlfc.zfgj.convertor.ContractConvertor;
 import com.dlfc.zfgj.dto.*;
 import com.dlfc.zfgj.dto.base.ListResultDTO;
 import com.dlfc.zfgj.dto.base.ResultDTO;
+import com.dlfc.zfgj.exception.CustomRuntimeException;
+import com.dlfc.zfgj.model.Contract;
+import com.dlfc.zfgj.service.ContractService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by walden on 2017/2/15.
@@ -14,13 +20,18 @@ import javax.validation.Valid;
 @RequestMapping(value = "/w/contracts")
 public class ContractController {
 
+    @Autowired
+    private ContractService contractService;
+    @Autowired
+    private ContractConvertor contractConvertor;
     /**
      * Show all contracts which belongs to the user
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ListResultDTO<ContractDTO> contractList(){
-        return null;
+    public ListResultDTO<ContractDTO> contractList() throws CustomRuntimeException {
+        List<Contract> contracts = contractService.getAllContracts();
+        return contractConvertor.toResultDTO(contracts);
     }
 
     /**
@@ -29,8 +40,12 @@ public class ContractController {
      * @return
      */
     @RequestMapping(value = "/{contractid}/detail", method = RequestMethod.GET)
-    public ResultDTO<ContractDTO> contractDetail(@PathVariable String contractid){
-        return null;
+    public ResultDTO<ContractDTO> contractDetail(@PathVariable String contractid) throws CustomRuntimeException {
+        Contract contract = contractService.selectContractById(contractid);
+        if (contract == null){
+            throw new CustomRuntimeException("","");
+        }
+        return contractConvertor.toResultDTO(contract);
     }
 
     /**

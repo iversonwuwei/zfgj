@@ -1,6 +1,6 @@
 package com.dlfc.zfgj.service;
 
-import com.dlfc.zfgj.dto.ContractDTO;
+import com.dlfc.zfgj.model.Contract;
 
 import java.util.List;
 
@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface ContractService {
 
-    List<ContractDTO> getAllContractsBy(String param);
+    List<Contract> getAllContractsBy(String param);
 
-    List<ContractDTO> getAllContracts();
+    Contract selectContractById(String id);
+
+    List<Contract> getAllContracts();
 }

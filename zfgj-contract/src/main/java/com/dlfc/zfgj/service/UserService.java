@@ -1,6 +1,7 @@
 package com.dlfc.zfgj.service;
 
 import com.dlfc.zfgj.model.User;
+import com.dlfc.zfgj.model.UserExample;
 import com.dlfc.zfgj.repositories.UserMapper;
 import com.dlfc.zfgj.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,12 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public List<User> getUsers(){
-        return userRepository.getUsers();
-    }
+    @Autowired
+    private UserExample userExample;
 
-    public User getUserNew(){
-        return userMapper.user();
+
+    public List<User> getUsers(){
+        userExample.setDistinct(true);
+        return userMapper.selectByExample(userExample);
     }
 }

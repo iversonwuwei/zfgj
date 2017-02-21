@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -45,7 +46,7 @@ public class ContractDTO {
     /**
      * 房租
      */
-    private float feeOfMonth;
+    private Integer feeOfMonth;
 
     /**
      * 合同生效日期
@@ -62,11 +63,11 @@ public class ContractDTO {
     /**
      * 押金
      */
-    private float deposit;
+    private BigDecimal deposit;
 
     /**
      * 合同状态
      */
-    private String contractStatus;
+    private Short contractStatus;
 
 }
