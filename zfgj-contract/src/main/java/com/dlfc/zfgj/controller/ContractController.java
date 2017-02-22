@@ -4,8 +4,8 @@ import com.dlfc.zfgj.convertor.ContractConvertor;
 import com.dlfc.zfgj.dto.*;
 import com.dlfc.zfgj.dto.base.ListResultDTO;
 import com.dlfc.zfgj.dto.base.ResultDTO;
+import com.dlfc.zfgj.entity.ConContract;
 import com.dlfc.zfgj.exception.CustomRuntimeException;
-import com.dlfc.zfgj.model.Contract;
 import com.dlfc.zfgj.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +22,7 @@ public class ContractController {
 
     @Autowired
     private ContractService contractService;
+
     @Autowired
     private ContractConvertor contractConvertor;
     /**
@@ -30,7 +31,7 @@ public class ContractController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ListResultDTO<ContractDTO> contractList() throws CustomRuntimeException {
-        List<Contract> contracts = contractService.getAllContracts();
+        List<ConContract> contracts = contractService.getAllContracts();
         return contractConvertor.toResultDTO(contracts);
     }
 
@@ -41,7 +42,7 @@ public class ContractController {
      */
     @RequestMapping(value = "/{contractid}/detail", method = RequestMethod.GET)
     public ResultDTO<ContractDTO> contractDetail(@PathVariable String contractid) throws CustomRuntimeException {
-        Contract contract = contractService.selectContractById(contractid);
+        ConContract contract = contractService.findOne(contractid);
         if (contract == null){
             throw new CustomRuntimeException("","");
         }

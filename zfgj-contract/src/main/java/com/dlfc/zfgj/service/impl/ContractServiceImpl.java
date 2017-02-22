@@ -1,8 +1,9 @@
 package com.dlfc.zfgj.service.impl;
 
-import com.dlfc.zfgj.model.Contract;
-import com.dlfc.zfgj.model.ContractExample;
-import com.dlfc.zfgj.repositories.ContractMapper;
+import com.dlfc.zfgj.entity.ConContract;
+import com.dlfc.zfgj.entity.ConContractExample;
+import com.dlfc.zfgj.exception.CustomRuntimeException;
+import com.dlfc.zfgj.mapper.ConContractMapper;
 import com.dlfc.zfgj.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,32 +11,30 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by walden on 2017/2/21.
+ * Created by walden on 2017/2/22.
  */
 @Service
 public class ContractServiceImpl implements ContractService {
 
     @Autowired
-    private ContractMapper contractMapper;
-
+    private ConContractMapper conContractMapper;
     @Autowired
-    private ContractExample contractExample;
+    private ConContractExample conContractExample;
+
 
     @Override
-    public List<Contract> getAllContractsBy(String param) {
-        return null;
+    public List<ConContract> getAllContracts() {
+        conContractExample.setDistinct(true);
+        List<ConContract> conContracts = conContractMapper.findByExample(conContractExample);
+        return conContracts;
     }
 
     @Override
-    public Contract selectContractById(String id) {
-        Contract contract = contractMapper.selectById(id);
-        return contract;
-    }
-
-    @Override
-    public List<Contract> getAllContracts() {
-        contractExample.setDistinct(true);
-        List<Contract> contracts = contractMapper.selectByExample(contractExample);
-        return contracts;
+    public ConContract findOne(String id) throws CustomRuntimeException {
+        ConContract conContract = conContractMapper.findOne(id);
+        if (conContract == null){
+            throw new CustomRuntimeException("","");
+        }
+        return conContract;
     }
 }

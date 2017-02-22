@@ -13,6 +13,10 @@ public abstract class AbstractDTO {
 
     private Long id;
 
+    private String modifiedUserId;
+
+    private String createdUserId;
+
     @JsonIgnore
     public boolean isNew() {
         return this.id == null;

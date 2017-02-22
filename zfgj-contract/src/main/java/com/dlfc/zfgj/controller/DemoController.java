@@ -1,13 +1,10 @@
 package com.dlfc.zfgj.controller;
 
-import com.dlfc.zfgj.convertor.UserConvertor;
 import com.dlfc.zfgj.dto.UserDTO;
 import com.dlfc.zfgj.dto.base.ListResultDTO;
+import com.dlfc.zfgj.entity.ConContract;
 import com.dlfc.zfgj.exception.CustomRuntimeException;
-import com.dlfc.zfgj.model.HouhouseInfo;
-import com.dlfc.zfgj.model.User;
-import com.dlfc.zfgj.repositories.HouhouseInfoMapper;
-import com.dlfc.zfgj.service.UserService;
+import com.dlfc.zfgj.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,23 +19,21 @@ import java.util.List;
 @RequestMapping(value = "/w/demos")
 public class DemoController {
 
-    @Autowired
-    private UserService userService;
+
 
     @Autowired
-    private UserConvertor userConvertor;
-
-    @Autowired
-    private HouhouseInfoMapper houhouseInfoMapper;
+    private ContractService contractService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ListResultDTO<UserDTO> user() throws CustomRuntimeException {
-        List<User> users = userService.getUsers();
-        return userConvertor.toResultDTO(users);
+        /*List<User> users = userService.getUsers();
+        return userConvertor.toResultDTO(users);*/
+        return null;
     }
 
     @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public List<HouhouseInfo> get(){
-        return houhouseInfoMapper.getHouhouseInfos();
+    public List<ConContract> get(){
+        List<ConContract> conContracts = contractService.getAllContracts();
+        return conContracts;
     }
 }

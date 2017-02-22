@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = {"com.dlfc.zfgj.repositories"})
+@MapperScan(basePackages = {"com.dlfc.zfgj.mapper"})
 public class MybatisConfig {
 
     @Value("${spring.datasource.driver-class-name}")

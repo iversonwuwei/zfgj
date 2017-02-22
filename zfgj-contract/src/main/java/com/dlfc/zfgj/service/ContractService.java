@@ -1,17 +1,16 @@
 package com.dlfc.zfgj.service;
 
-import com.dlfc.zfgj.model.Contract;
+import com.dlfc.zfgj.entity.ConContract;
+import com.dlfc.zfgj.exception.CustomRuntimeException;
 
 import java.util.List;
 
 /**
- * Created by walden on 2017/2/16.
+ * Created by walden on 2017/2/22.
  */
 public interface ContractService {
 
-    List<Contract> getAllContractsBy(String param);
+    List<ConContract> getAllContracts();
 
-    Contract selectContractById(String id);
-
-    List<Contract> getAllContracts();
+    ConContract findOne(String id) throws CustomRuntimeException;
 }

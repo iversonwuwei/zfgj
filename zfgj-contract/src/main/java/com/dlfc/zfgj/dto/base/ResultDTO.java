@@ -49,7 +49,7 @@ public class ResultDTO<T> extends AbstractResultDTO {
 
     public static ResultDTO<Void> failure(final ResultError... errors) {
         final ResultDTO<Void> result = new ResultDTO<>(Status.failure);
-        //result.setErrors(errors);
+        result.setErrors(errors);
         return result;
     }
 
@@ -62,7 +62,7 @@ public class ResultDTO<T> extends AbstractResultDTO {
     public static <T> ResultDTO<T> failure(final T data, final ResultError... errors) {
         final ResultDTO<T> result = new ResultDTO<>(Status.failure);
         result.setData(data);
-        //result.setErrors(errors);
+        result.setErrors(errors);
         return result;
     }
 }

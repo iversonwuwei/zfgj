@@ -1,8 +1,10 @@
 package com.dlfc.zfgj.dto.base;
 
+import com.dlfc.zfgj.error.ResultError;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
@@ -23,19 +25,19 @@ public abstract class AbstractResultDTO {
     /**
      * 处理结果状态
      */
-    //@ApiModelProperty(value = "结果状态（成功 或 失败）", position = 0)
+    @ApiModelProperty(value = "结果状态（成功 或 失败）", position = 0)
     protected Status status;
 
     /**
      * 错误消息
      */
-    //@ApiModelProperty(value = "异常信息", position = 10)
-    //protected ResultError[] errors;
+    @ApiModelProperty(value = "异常信息", position = 10)
+    protected ResultError[] errors;
 
     /**
      * 时间戳
      */
-    //@ApiModelProperty(value = "系统处理时间戳（增量拉数据时使用）", position = 11)
+    @ApiModelProperty(value = "系统处理时间戳（增量拉数据时使用）", position = 11)
     @JsonInclude(JsonInclude.Include.NON_NULL)
     protected Date timestamp;
 
@@ -49,16 +51,16 @@ public abstract class AbstractResultDTO {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "errors")
-    /*public ResultError[] getErrors() {
+    public ResultError[] getErrors() {
         return this.errors;
-    }*/
+    }
 
     ///////////////////////////////////////
     // Setter
     ///////////////////////////////////////
-    /*protected void setErrors(final ResultError... errors) {
+    protected void setErrors(final ResultError... errors) {
         this.errors = errors;
-    }*/
+    }
 
     @JsonIgnore
     public boolean isFailure() {
@@ -78,8 +80,8 @@ public abstract class AbstractResultDTO {
         this.timestamp = timestamp;
     }
 
-    //@JsonIgnore
-    /*public String errorsToString() {
+    @JsonIgnore
+    public String errorsToString() {
         if ((this.errors != null) && (this.errors.length > 0)) {
             final StringBuilder builder = new StringBuilder();
             builder.append("Errors : [");
@@ -91,5 +93,5 @@ public abstract class AbstractResultDTO {
         } else {
             return "errors : []";
         }
-    }*/
+    }
 }
