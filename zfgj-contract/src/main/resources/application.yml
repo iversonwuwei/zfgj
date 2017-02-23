@@ -5,9 +5,10 @@ spring:
     username: root
     password: rd123456
 
-
 upload:
   path: ~/uploadFile
 
 mybatis:
   mapper-locations: classpath*:mappings/*.xml
+server:
+  port: 8088

@@ -1,4 +1,4 @@
-package com.dlfc.zfgj.controller;
+package com.dlfc.zfgj.controller.web;
 
 import com.dlfc.zfgj.convertor.ContractConvertor;
 import com.dlfc.zfgj.dto.*;

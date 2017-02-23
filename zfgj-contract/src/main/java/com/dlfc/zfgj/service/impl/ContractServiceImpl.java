@@ -24,8 +24,8 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public List<ConContract> getAllContracts() {
-        conContractExample.setDistinct(true);
-        List<ConContract> conContracts = conContractMapper.findByExample(conContractExample);
+        conContractExample.setDistinct(false);
+        List<ConContract> conContracts = conContractMapper.selectByExample(conContractExample);
         return conContracts;
     }
 
